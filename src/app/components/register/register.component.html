@@ -1,0 +1,49 @@
+<div class="register-wrapper">
+    <div class="register-container mat-card">
+        <h1 class="mat-h1">Cadastro</h1>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nome</mat-label>
+                    <input matInput formControlName="name">
+                    <mat-error *ngIf="registerForm.get('name')?.hasError('required')">
+                      Nome é obrigatório!
+                    </mat-error>
+                  </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
+                    <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+                      Email é obrigatório!
+                    </mat-error>
+                  </mat-form-field>
+            </div>
+          
+          <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Senha</mat-label>
+                <input matInput formControlName="password" type="password">
+                <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
+                  Senha é obrigatória!
+                </mat-error>
+              </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Confirmação de Senha</mat-label>
+                <input matInput formControlName="passwordConfirmation" type="password">
+                <mat-error *ngIf="registerForm.get('passwordConfirmation')?.hasError('required')">
+                  Confirmação de senha é obrigatória!
+                </mat-error>
+              </mat-form-field>
+          </div>
+          <div class="button-container">
+            <button mat-raised-button color="primary" [disabled]="registerForm.invalid">Cadastrar</button>
+          </div>
+        </form>
+        <h5 class="botton-message">Já possui conta? <a routerLink="/login">Faça login agora</a>.</h5>
+      </div>
+</div>

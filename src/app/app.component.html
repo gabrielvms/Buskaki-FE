@@ -1,1 +1,19 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/name-search">Buscar por nome</button>
+        <button mat-menu-item routerLink="/cnpj-search">Buscar por CNPJ</button>
+        <button mat-menu-item routerLink="/district-search">Buscar por bairro</button>
+        <button mat-menu-item routerLink="/street-search">Buscar por rua</button>
+        <button mat-menu-item routerLink="/advanced-search">Buscar avançada</button>
+      </mat-menu>
+    <span>Buskaki Empresas</span>
+    <span class="example-spacer"></span>
+    <button mat-button class="example-icon">
+      Sair
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
 <router-outlet></router-outlet>

@@ -1,0 +1,25 @@
+/* Structure */
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  margin-right: 1rem;
+  font-size: 14px;
+  width: calc(100% - 5rem)
+}
+
+.mat-icon {
+  margin-right: 0rem;
+  margin-left: 0rem;
+}
+
+.form-field {
+  display: flex;
+  align-items: center;
+}
+  
+.search-button {
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+}

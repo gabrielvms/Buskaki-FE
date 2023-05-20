@@ -1,0 +1,31 @@
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85%;
+    /* opcional, para centralizar verticalmente */
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.botton-message {
+    margin-top: 1rem;
+    margin-bottom: 0px;
+}
+
+mat-form-field {
+    width: 20rem;
+}
+
