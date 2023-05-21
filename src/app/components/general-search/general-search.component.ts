@@ -15,7 +15,7 @@ export class GeneralSearchComponent {
   constructor(private apiService: ApiService) {
   }
 
-  displayedColumns: string[] = ['cnpj'];
+  displayedColumns: string[] = ['cnpj', 'nome_fantasia', 'razao_social', 'endereco', 'bairro', 'cep'];
   dataSource = new MatTableDataSource<SearchResult>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -36,6 +36,8 @@ export class GeneralSearchComponent {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if(filterValue.length > 4){
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
   }
 }

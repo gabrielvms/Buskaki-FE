@@ -12,7 +12,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getData(){
-    return this.http.get<SearchResult[]>(this.baseUrl+'companies');
+    return this.http.get<SearchResult[]>(this.baseUrl+'companies')
   };
 
 }
