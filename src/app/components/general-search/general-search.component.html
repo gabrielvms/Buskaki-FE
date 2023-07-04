@@ -1,17 +1,20 @@
-<div style="margin: 2rem 2.5rem 1rem 2.5rem">
-  <h1 style="font-weight: 500; color: #303030">Busca Geral</h1>
+<div style="margin: 2rem 2.5rem 1rem 2.5rem;">
+  <h1 style="font-weight: 500; color: #303030;">Busca Geral</h1>
 </div>
 <div class="container">
   <div>
     <mat-form-field appearance="outline">
       <mat-label>Filtro</mat-label>
-      <input
-        matInput
-        (keyup)="applyFilter($event)"
-        placeholder="Ex. Bar do Zé"
-        #input
-      />
+      <input matInput placeholder="Ex. Bar Garrafeiros" #input />
     </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="applyFilter($event)"
+      class="search-button"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
   </div>
 
   <div class="mat-elevation-z8">
@@ -55,7 +58,7 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="log()" class="example-element-row"></tr>
 
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
@@ -70,3 +73,13 @@
     ></mat-paginator>
   </div>
 </div>
+<!-- <iframe
+  width="600"
+  height="450"
+  style="border:0"
+  loading="lazy"
+  allowfullscreen
+  referrerpolicy="no-referrer-when-downgrade"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAgt91BsFfO8hiVTO831Tnc3ghN8v5lZBc
+    &q=Travessa%20Capit%C3%A3o%20Clementino%20Paran%C3%A1%2C%20104%2C%20Curitiba%2C%20Paran%C3%A1%2C%20Brasil">
+</iframe> -->

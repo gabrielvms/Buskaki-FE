@@ -36,8 +36,10 @@ export class GeneralSearchComponent {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    if(filterValue.length > 4){
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-    }
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  log(){
+    console.log("test");
   }
 }

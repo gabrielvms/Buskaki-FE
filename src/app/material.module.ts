@@ -8,7 +8,10 @@ import { MatMenuModule } from '@angular/material/menu'
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs'
-
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatTooltipModule } from '@angular/material/tooltip';
+ 
 
 
 @NgModule({
@@ -22,6 +25,9 @@ import { MatTabsModule } from '@angular/material/tabs'
     MatTableModule,
     MatPaginatorModule,
     MatTabsModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+    MatTooltipModule,
   ]
 })
 export class MaterialModule { }

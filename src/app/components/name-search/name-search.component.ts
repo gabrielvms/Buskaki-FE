@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { SearchResult } from 'src/app/interfaces/search-result';
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-name-search',
@@ -10,24 +11,33 @@ import { SearchResult } from 'src/app/interfaces/search-result';
   styleUrls: ['./name-search.component.css']
 })
 export class NameSearchComponent {
-  displayedColumns: string[] = ['cnpj', 'name', 'commercial_name', 'address', 'distric', 'zip_code'];
+   
+  constructor(private apiService: ApiService) {
+  }
+
+  displayedColumns: string[] = ['cnpj', 'nome_fantasia', 'razao_social', 'endereco', 'bairro', 'cep'];
   dataSource = new MatTableDataSource<SearchResult>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor() {
-    // Assign the data to the data source for the table to render
-    //this.dataSource = new MatTableDataSource(MOCK_RESULT);
+
+  results: SearchResult[] = [];
+
+  ngOnInit(): void {
+    this.apiService.getData().subscribe((data: SearchResult[]) => {
+      data.forEach(element => {
+        this.results.push(element);
+      });
+      this.dataSource = new MatTableDataSource(this.results);
+      this.dataSource.paginator = this.paginator;
+    });
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-  
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if(filterValue.length > 4){
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
   }
 }

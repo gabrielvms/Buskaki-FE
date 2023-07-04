@@ -18,6 +18,7 @@ import { DistrictSearchComponent } from './components/district-search/district-s
 import { StreetSearchComponent } from './components/street-search/street-search.component';
 import { AdvancedSearchComponent } from './components/advanced-search/advanced-search.component';
 import { GeneralSearchComponent } from './components/general-search/general-search.component';
+import { RowCardComponent } from './components/row-card/row-card.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { GeneralSearchComponent } from './components/general-search/general-sear
     DistrictSearchComponent,
     StreetSearchComponent,
     AdvancedSearchComponent,
-    GeneralSearchComponent
+    GeneralSearchComponent,
+    RowCardComponent
   ],
   imports: [
     FormsModule,
