@@ -9,8 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Components
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { NameSearchComponent } from './components/name-search/name-search.component';
 import { CnpjSearchComponent } from './components/cnpj-search/cnpj-search.component';
@@ -23,8 +21,6 @@ import { RowCardComponent } from './components/row-card/row-card.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
     HomeComponent,
     NameSearchComponent,
     CnpjSearchComponent,

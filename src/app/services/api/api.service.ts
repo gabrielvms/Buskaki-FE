@@ -14,5 +14,4 @@ export class ApiService {
   getData(){
     return this.http.get<SearchResult[]>(this.baseUrl+'companies')
   };
-
 }

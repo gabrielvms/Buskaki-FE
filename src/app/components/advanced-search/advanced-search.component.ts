@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Observable, map, startWith } from 'rxjs';
 import { SearchResult } from 'src/app/interfaces/search-result';
 import { ApiService } from 'src/app/services/api/api.service';
+import { DISTRICTS } from 'src/app/constants/districts';
 
 @Component({
   selector: 'app-advanced-search',
@@ -14,7 +15,7 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class AdvancedSearchComponent {
   myControl = new FormControl('');
-  options: string[] = ['One', 'Two', 'Three'];
+  options: string[] = DISTRICTS;
   filteredOptions!: Observable<string[]>;
   
   constructor(private apiService: ApiService) {
