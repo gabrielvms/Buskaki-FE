@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { SearchResult } from 'src/app/interfaces/search-result';
 import { ApiService } from 'src/app/services/api/api.service';
+import { DISTRICTS } from 'src/app/constants/districts';
 
 @Component({
   selector: 'app-street-search',
@@ -11,7 +12,8 @@ import { ApiService } from 'src/app/services/api/api.service';
   styleUrls: ['./street-search.component.css']
 })
 export class StreetSearchComponent {
-
+  districts: string[] = DISTRICTS;
+  
   constructor(private apiService: ApiService) {
   }
 

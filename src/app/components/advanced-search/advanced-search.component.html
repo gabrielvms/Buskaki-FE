@@ -3,29 +3,22 @@
 </div>
   <div class="container">
     <div>
-      <mat-form-field appearance="outline" style="width: 10rem;">
+      <mat-form-field appearance="outline" style="width: 12rem;">
         <mat-label>Bairro</mat-label>
-          <input type="text"
-                placeholder="Centro"
-                aria-label="Bairro"
-                matInput
-                [formControl]="myControl"
-                [matAutocomplete]="auto">
-          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-              {{option}}
+          <mat-select>
+            <mat-option *ngFor="let district of districts" [value]="district">
+              {{district}}
             </mat-option>
-    </mat-autocomplete>
+          </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" style="width: 7rem;" matTooltip="Tipo de logradouro">
-        <mat-label>Tipo de logradouro</mat-label>
         <mat-select>
           <mat-option value="RUA">Rua</mat-option>
           <mat-option value="AVENIDA">Avenida</mat-option>
           <mat-option value="PRAÇA">Praça</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field appearance="outline" style="width: calc(100% - 19rem); margin-right: 0;">
+      <mat-form-field appearance="outline" style="width: calc(100% - 21rem); margin-right: 0;">
         <mat-label>Logradouro</mat-label>
         <input matInput placeholder="Ex. Visconde de Guarapuava" #input />
       </mat-form-field>

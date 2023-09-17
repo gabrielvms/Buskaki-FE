@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { SearchResult } from 'src/app/interfaces/search-result';
 import { ApiService } from 'src/app/services/api/api.service';
+import { DISTRICTS } from 'src/app/constants/districts';
 
 @Component({
   selector: 'app-name-search',
@@ -11,7 +12,8 @@ import { ApiService } from 'src/app/services/api/api.service';
   styleUrls: ['./name-search.component.css']
 })
 export class NameSearchComponent {
-   
+  districts: string[] = DISTRICTS;
+
   constructor(private apiService: ApiService) {
   }
 

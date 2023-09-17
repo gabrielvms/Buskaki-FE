@@ -3,16 +3,23 @@
 </div>
 <div class="container">
   <div>
+    <mat-form-field appearance="outline" style="width: 12rem;">
+      <mat-label>Bairro</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let district of districts" [value]="district">
+            {{district}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
     <mat-form-field appearance="outline" style="width: 7rem;" matTooltip="Tipo de logradouro">
       <mat-label>Tipo de Logradouro</mat-label>
       <mat-select>
         <mat-option value="rua">Rua</mat-option>
         <mat-option value="avenida">Avenida</mat-option>
         <mat-option value="praça">Praça</mat-option>
-        <!-- Add more options as needed -->
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" style="width: calc(100% - 26rem);">
       <mat-label>Logradouro</mat-label>
       <input matInput placeholder="Ex. Visconde de Guarapuava" #input />
     </mat-form-field>

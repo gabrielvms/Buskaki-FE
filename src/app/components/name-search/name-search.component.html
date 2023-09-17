@@ -3,7 +3,15 @@
 </div>
 <div class="container">
   <div>
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" style="width: 12rem;">
+      <mat-label>Bairro</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let district of districts" [value]="district">
+            {{district}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: calc(100% - 18rem);">
       <mat-label>Nome</mat-label>
       <input matInput placeholder="Ex. Bar Garrafeiros" #input />
     </mat-form-field>
