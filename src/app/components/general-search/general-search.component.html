@@ -1,16 +1,19 @@
 <div style="margin: 2rem 2.5rem 1rem 2.5rem;">
-  <h1 style="font-weight: 500; color: #303030;">Busca Geral</h1>
+  <h1 style="font-weight: 500; color: #303030;">Busca Avançada</h1>
 </div>
 <div class="container">
   <div>
     <mat-form-field appearance="outline">
       <mat-label>Filtro</mat-label>
-      <input matInput placeholder="Ex. Bar Garrafeiros" #input />
+      <input matInput placeholder="Ex. Bar Garrafeiros" #input [(ngModel)]="filterValue"/>
+      <button *ngIf="filterValue" matSuffix mat-icon-button aria-label="Clear" (click)="filterValue=''">
+        <mat-icon>close</mat-icon>
+      </button>
     </mat-form-field>
     <button
       mat-raised-button
       color="primary"
-      (click)="applyFilter($event)"
+      (click)="applyFilter()"
       class="search-button"
     >
       <mat-icon>search</mat-icon>
@@ -68,12 +71,12 @@
       </tr>
     </table>
     <mat-paginator
-      [pageSizeOptions]="[5, 10, 25, 100]"
+      [pageSizeOptions]="[10, 25, 100]"
       aria-label="Selecione a pagina"
     ></mat-paginator>
   </div>
 </div>
-<!-- <iframe
+<iframe
   width="600"
   height="450"
   style="border:0"
@@ -82,4 +85,4 @@
   referrerpolicy="no-referrer-when-downgrade"
   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAgt91BsFfO8hiVTO831Tnc3ghN8v5lZBc
     &q=Travessa%20Capit%C3%A3o%20Clementino%20Paran%C3%A1%2C%20104%2C%20Curitiba%2C%20Paran%C3%A1%2C%20Brasil">
-</iframe> -->
+</iframe>

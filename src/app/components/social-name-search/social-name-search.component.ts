@@ -1,19 +1,20 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { SearchResult } from 'src/app/interfaces/search-result';
 import { ApiService } from 'src/app/services/api/api.service';
-import { DialogService } from 'src/app/services/dialog/dialog.service';
+import { DISTRICTS } from 'src/app/constants/districts';
 
 @Component({
-  selector: 'app-general-search',
-  templateUrl: './general-search.component.html',
-  styleUrls: ['./general-search.component.css']
+  selector: 'app-social-name-search',
+  templateUrl: './social-name-search.component.html',
+  styleUrls: ['./social-name-search.component.css']
 })
-export class GeneralSearchComponent {
-  
-  constructor(private apiService: ApiService, private dialogService: DialogService) {
+export class SocialNameSearchComponent {
+  districts: string[] = DISTRICTS;
+
+  constructor(private apiService: ApiService) {
   }
 
   displayedColumns: string[] = ['cnpj', 'nome_fantasia', 'razao_social', 'endereco', 'bairro', 'cep'];
@@ -23,26 +24,28 @@ export class GeneralSearchComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
   filterValue: string = "";
+  filterType: string = "";
+  selectedDistrict: string = "";
   results: SearchResult[] = [];
 
   ngOnInit(): void {
-    document.getElementById("spinner")!.style.display = "block";
     this.apiService.getData().subscribe((data: SearchResult[]) => {
       data.forEach(element => {
         this.results.push(element);
       });
       this.dataSource = new MatTableDataSource(this.results);
       this.dataSource.paginator = this.paginator;
-      document.getElementById("spinner")!.style.display = "none";
     });
   }
 
   applyFilter() {
-    this.dataSource.filter = this.filterValue.trim().toLowerCase();
+    this.apiService.filtroRazaoSocial(this.selectedDistrict, this.filterValue).subscribe((data: SearchResult[]) => {
+      this.results = [];
+      data.forEach(element => {
+        this.results.push(element);
+      });
+      this.dataSource = new MatTableDataSource(this.results);
+      this.dataSource.paginator = this.paginator;
+    })
   }
-
-  openRowCard(rowData: any) {
-    this.dialogService.openRowCard(rowData);
-  }
-  
 }

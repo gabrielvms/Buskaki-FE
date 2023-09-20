@@ -1,10 +1,12 @@
-<h2 mat-dialog-title>Row Details</h2>
+<h2 mat-dialog-title>Informação Detalhada</h2>
 <div mat-dialog-content>
-  <p><strong>CNPJ:</strong> {{ data.cnpj }}</p>
+  <p><strong>CNPJ:</strong> {{ data.cnpj.substring(0,2)+"."+data.cnpj.substring(2,5)+"."+data.cnpj.substring(5,8)+"/"+data.cnpj.substring(8,12)+"-"+data.cnpj.substring(12,14) }}</p>
   <p><strong>Nome Fantasia:</strong> {{ data.nome_fantasia }}</p>
   <p><strong>Razão Social:</strong> {{ data.razao_social }}</p>
-  <!-- Add more fields as needed -->
+  <p><strong>Endereço</strong> {{ data.tipo_logradouro + " " + data.logradouro }}</p>
+  <p><strong>Bairro:</strong> {{ data.bairro }}</p>
+  <p><strong>CEP:</strong> {{ data.cep.substring(0,5) + "-" + data.cep.substring(5,8) }}</p>
 </div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
+  <button mat-dialog-close mat-raised-button color="primary">Close</button>
 </div>

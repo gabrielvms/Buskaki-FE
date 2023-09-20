@@ -10,8 +10,8 @@ table {
 }
 
 .mat-icon {
-  margin-right: 0rem;
-  margin-left: 0rem;
+  margin-right: 0rem !important;
+  margin-left: 0rem !important;
 }
 
 .form-field {

@@ -31,7 +31,6 @@ export class DistrictSearchComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-
   results: SearchResult[] = [];
 
   ngOnInit(): void {
@@ -44,16 +43,21 @@ export class DistrictSearchComponent {
     });
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    if(filterValue.length > 4){
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-    }
+  applyFilter() {
+    const selectedDistrict = this.myControl.value != null? this.myControl.value : "";
+    this.apiService.filtroBairro(selectedDistrict).subscribe((data: SearchResult[]) => {
+      this.results = [];
+      data.forEach(element => {
+        this.results.push(element);
+      });
+      this.dataSource = new MatTableDataSource(this.results);
+      this.dataSource.paginator = this.paginator;
+    })
   }
+  
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 }

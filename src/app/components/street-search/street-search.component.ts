@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SearchResult } from 'src/app/interfaces/search-result';
 import { ApiService } from 'src/app/services/api/api.service';
 import { DISTRICTS } from 'src/app/constants/districts';
+import { STREET_TYPES } from 'src/app/constants/street-types';
 
 @Component({
   selector: 'app-street-search',
@@ -13,6 +14,7 @@ import { DISTRICTS } from 'src/app/constants/districts';
 })
 export class StreetSearchComponent {
   districts: string[] = DISTRICTS;
+  streetTypes: string[] = STREET_TYPES;
   
   constructor(private apiService: ApiService) {
   }
@@ -23,7 +25,9 @@ export class StreetSearchComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-
+  filterValue: string = "";
+  filterType: string = "";
+  selectedDistrict: string = "";
   results: SearchResult[] = [];
 
   ngOnInit(): void {
@@ -36,10 +40,14 @@ export class StreetSearchComponent {
     });
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    if(filterValue.length > 4){
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-    }
+  applyFilter() {
+    this.apiService.filtroRua(this.selectedDistrict, this.filterType, this.filterValue).subscribe((data: SearchResult[]) => {
+      this.results = [];
+      data.forEach(element => {
+        this.results.push(element);
+      });
+      this.dataSource = new MatTableDataSource(this.results);
+      this.dataSource.paginator = this.paginator;
+    })
   }
 }

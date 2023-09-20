@@ -3,13 +3,15 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item routerLink="/">Busca Geral</button>
-        <button mat-menu-item routerLink="/name-search">Buscar por nome</button>
+        <button mat-menu-item routerLink="/name-search">Buscar por Nome Fantasia</button>
+        <button mat-menu-item routerLink="/social-name-search">Buscar por Razão Social</button>
         <button mat-menu-item routerLink="/cnpj-search">Buscar por CNPJ</button>
-        <button mat-menu-item routerLink="/district-search">Buscar por bairro</button>
-        <button mat-menu-item routerLink="/street-search">Buscar por rua</button>
-        <button mat-menu-item routerLink="/advanced-search">Busca avançada</button>
+        <button mat-menu-item routerLink="/district-search">Buscar por Bairro</button>
+        <button mat-menu-item routerLink="/street-search">Buscar por Logradouro</button>
+        <button mat-menu-item routerLink="/advanced-search">Busca Avançada</button>
       </mat-menu>
     <span>Buskaki Empresas</span>
   </mat-toolbar>
 <router-outlet></router-outlet>
+<app-mat-spinner-overlay id='spinner' [overlay]="true" style="display: none;"> 
+</app-mat-spinner-overlay>

@@ -9,7 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Components
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
 import { NameSearchComponent } from './components/name-search/name-search.component';
 import { CnpjSearchComponent } from './components/cnpj-search/cnpj-search.component';
 import { DistrictSearchComponent } from './components/district-search/district-search.component';
@@ -17,18 +16,21 @@ import { StreetSearchComponent } from './components/street-search/street-search.
 import { AdvancedSearchComponent } from './components/advanced-search/advanced-search.component';
 import { GeneralSearchComponent } from './components/general-search/general-search.component';
 import { RowCardComponent } from './components/row-card/row-card.component';
+import { SocialNameSearchComponent } from './components/social-name-search/social-name-search.component';
+import { MatSpinnerOverlayComponent } from './components/mat-spinner-overlay/mat-spinner-overlay.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     NameSearchComponent,
     CnpjSearchComponent,
     DistrictSearchComponent,
     StreetSearchComponent,
     AdvancedSearchComponent,
     GeneralSearchComponent,
-    RowCardComponent
+    RowCardComponent,
+    SocialNameSearchComponent,
+    MatSpinnerOverlayComponent
   ],
   imports: [
     FormsModule,

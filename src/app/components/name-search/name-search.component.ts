@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -23,7 +23,9 @@ export class NameSearchComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-
+  filterValue: string = "";
+  filterType: string = "";
+  selectedDistrict: string = "";
   results: SearchResult[] = [];
 
   ngOnInit(): void {
@@ -36,10 +38,14 @@ export class NameSearchComponent {
     });
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    if(filterValue.length > 4){
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-    }
+  applyFilter() {
+    this.apiService.filtroNomeFantasia(this.selectedDistrict, this.filterValue).subscribe((data: SearchResult[]) => {
+      this.results = [];
+      data.forEach(element => {
+        this.results.push(element);
+      });
+      this.dataSource = new MatTableDataSource(this.results);
+      this.dataSource.paginator = this.paginator;
+    })
   }
 }

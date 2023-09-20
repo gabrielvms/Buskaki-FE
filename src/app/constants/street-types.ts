@@ -1,0 +1,17 @@
+export const STREET_TYPES: string[] = [
+"ALAMEDA",
+"RUA",
+"LARGO",
+"ACESSO",
+"JARDINETE",
+"ESTRADA",
+"AREA",
+"CONJUNTO",
+"TERMINAL",
+"RODOVIA",
+"PRACA",
+"VIADUTO",
+"AVENIDA",
+"TRAVESSA",
+"PARQUE",
+"TRINCHEIRA"];

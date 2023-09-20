@@ -3,30 +3,30 @@
 </div>
 <div class="container">
   <div>
-    <mat-form-field appearance="outline" style="width: 12rem;">
+    <mat-form-field appearance="outline" style="width: 15rem;">
       <mat-label>Bairro</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="selectedDistrict">
           <mat-option *ngFor="let district of districts" [value]="district">
             {{district}}
           </mat-option>
         </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="outline" style="width: 7rem;" matTooltip="Tipo de logradouro">
+    <mat-form-field appearance="outline" style="width: 10rem;" matTooltip="Tipo de logradouro">
       <mat-label>Tipo de Logradouro</mat-label>
-      <mat-select>
-        <mat-option value="rua">Rua</mat-option>
-        <mat-option value="avenida">Avenida</mat-option>
-        <mat-option value="praça">Praça</mat-option>
+      <mat-select [(ngModel)]="filterType">
+        <mat-option *ngFor="let type of streetTypes" [value]="type">
+          {{type}}
+        </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="outline" style="width: calc(100% - 26rem);">
+    <mat-form-field appearance="outline" style="width: calc(100% - 32rem);">
       <mat-label>Logradouro</mat-label>
-      <input matInput placeholder="Ex. Visconde de Guarapuava" #input />
+      <input matInput placeholder="Ex. Visconde de Guarapuava" #input [(ngModel)]="filterValue"/>
     </mat-form-field>
     <button
       mat-raised-button
       color="primary"
-      (click)="applyFilter($event)"
+      (click)="applyFilter()"
       class="search-button"
     >
       <mat-icon>search</mat-icon>
@@ -86,7 +86,7 @@
       </tr>
     </table>
     <mat-paginator
-      [pageSizeOptions]="[5, 10, 25, 100]"
+      [pageSizeOptions]="[10, 25, 100]"
       aria-label="Selecione a pagina"
     ></mat-paginator>
   </div>
