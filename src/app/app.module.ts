@@ -13,7 +13,6 @@ import { NameSearchComponent } from './components/name-search/name-search.compon
 import { CnpjSearchComponent } from './components/cnpj-search/cnpj-search.component';
 import { DistrictSearchComponent } from './components/district-search/district-search.component';
 import { StreetSearchComponent } from './components/street-search/street-search.component';
-import { AdvancedSearchComponent } from './components/advanced-search/advanced-search.component';
 import { GeneralSearchComponent } from './components/general-search/general-search.component';
 import { RowCardComponent } from './components/row-card/row-card.component';
 import { SocialNameSearchComponent } from './components/social-name-search/social-name-search.component';
@@ -26,7 +25,6 @@ import { MatSpinnerOverlayComponent } from './components/mat-spinner-overlay/mat
     CnpjSearchComponent,
     DistrictSearchComponent,
     StreetSearchComponent,
-    AdvancedSearchComponent,
     GeneralSearchComponent,
     RowCardComponent,
     SocialNameSearchComponent,

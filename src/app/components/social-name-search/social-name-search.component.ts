@@ -29,16 +29,10 @@ export class SocialNameSearchComponent {
   results: SearchResult[] = [];
 
   ngOnInit(): void {
-    this.apiService.getData().subscribe((data: SearchResult[]) => {
-      data.forEach(element => {
-        this.results.push(element);
-      });
-      this.dataSource = new MatTableDataSource(this.results);
-      this.dataSource.paginator = this.paginator;
-    });
   }
 
   applyFilter() {
+    document.getElementById("spinner")!.style.display = "block";
     this.apiService.filtroRazaoSocial(this.selectedDistrict, this.filterValue).subscribe((data: SearchResult[]) => {
       this.results = [];
       data.forEach(element => {
@@ -46,6 +40,7 @@ export class SocialNameSearchComponent {
       });
       this.dataSource = new MatTableDataSource(this.results);
       this.dataSource.paginator = this.paginator;
+      document.getElementById("spinner")!.style.display = "none";
     })
   }
 }

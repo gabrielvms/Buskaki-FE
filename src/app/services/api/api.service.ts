@@ -7,13 +7,9 @@ import { SearchResult } from 'src/app/interfaces/search-result';
 })
 export class ApiService {
 
-  private baseUrl:string = 'http://localhost:5001';
+  private baseUrl:string = 'https://buskaki-be.vercel.app';
 
   constructor(private http: HttpClient) { }
-
-  getData(){
-    return this.http.get<SearchResult[]>(`${this.baseUrl}/companies`);
-  };
 
   filtroNomeFantasia(bairro: string, company: string){
     return this.http.get<SearchResult[]>(`${this.baseUrl}/companies/nome_fantasia/${bairro}/${company}`);

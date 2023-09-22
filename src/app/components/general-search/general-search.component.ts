@@ -2,6 +2,7 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { DISTRICTS } from 'src/app/constants/districts';
 import { SearchResult } from 'src/app/interfaces/search-result';
 import { ApiService } from 'src/app/services/api/api.service';
 import { DialogService } from 'src/app/services/dialog/dialog.service';
@@ -12,7 +13,8 @@ import { DialogService } from 'src/app/services/dialog/dialog.service';
   styleUrls: ['./general-search.component.css']
 })
 export class GeneralSearchComponent {
-  
+  districts: string[] = DISTRICTS;
+
   constructor(private apiService: ApiService, private dialogService: DialogService) {
   }
 
@@ -23,11 +25,19 @@ export class GeneralSearchComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
   filterValue: string = "";
+  selectedDistrict: string = "";
   results: SearchResult[] = [];
 
   ngOnInit(): void {
+  }
+
+  applyFilter() {
+    this.dataSource.filter = this.filterValue.trim().toLowerCase();
+  }
+
+  fetchData(): void {
     document.getElementById("spinner")!.style.display = "block";
-    this.apiService.getData().subscribe((data: SearchResult[]) => {
+    this.apiService.filtroBairro(this.selectedDistrict).subscribe((data: SearchResult[]) => {
       data.forEach(element => {
         this.results.push(element);
       });
@@ -35,10 +45,6 @@ export class GeneralSearchComponent {
       this.dataSource.paginator = this.paginator;
       document.getElementById("spinner")!.style.display = "none";
     });
-  }
-
-  applyFilter() {
-    this.dataSource.filter = this.filterValue.trim().toLowerCase();
   }
 
   openRowCard(rowData: any) {

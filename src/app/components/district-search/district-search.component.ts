@@ -34,16 +34,10 @@ export class DistrictSearchComponent {
   results: SearchResult[] = [];
 
   ngOnInit(): void {
-    this.apiService.getData().subscribe((data: SearchResult[]) => {
-      data.forEach(element => {
-        this.results.push(element);
-      });
-      this.dataSource = new MatTableDataSource(this.results);
-      this.dataSource.paginator = this.paginator;
-    });
   }
 
   applyFilter() {
+    document.getElementById("spinner")!.style.display = "block";
     const selectedDistrict = this.myControl.value != null? this.myControl.value : "";
     this.apiService.filtroBairro(selectedDistrict).subscribe((data: SearchResult[]) => {
       this.results = [];
@@ -52,6 +46,7 @@ export class DistrictSearchComponent {
       });
       this.dataSource = new MatTableDataSource(this.results);
       this.dataSource.paginator = this.paginator;
+      document.getElementById("spinner")!.style.display = "none";
     })
   }
   

@@ -5,12 +5,12 @@
     <div>
       <mat-form-field appearance="outline">
         <mat-label>CNPJ</mat-label>
-        <input matInput placeholder="Ex. 00000000/0001-52" #input />
+        <input matInput placeholder="Ex. 00000000/0001-52" #input [(ngModel)]="filterValue"/>
       </mat-form-field>
       <button
         mat-raised-button
         color="primary"
-        (click)="applyFilter($event)"
+        (click)="applyFilter()"
         class="search-button"
       >
         <mat-icon>search</mat-icon>

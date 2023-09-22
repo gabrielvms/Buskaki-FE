@@ -21,23 +21,22 @@ export class CnpjSearchComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-
+  filterValue: string = "";
   results: SearchResult[] = [];
 
   ngOnInit(): void {
-    this.apiService.getData().subscribe((data: SearchResult[]) => {
+  }
+
+  applyFilter() {
+    document.getElementById("spinner")!.style.display = "block";
+    this.apiService.filtroCnpj(this.filterValue).subscribe((data: SearchResult[]) => {
+      this.results = [];
       data.forEach(element => {
         this.results.push(element);
       });
       this.dataSource = new MatTableDataSource(this.results);
       this.dataSource.paginator = this.paginator;
-    });
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    if(filterValue.length > 4){
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-    }
+      document.getElementById("spinner")!.style.display = "none";
+    })
   }
 }

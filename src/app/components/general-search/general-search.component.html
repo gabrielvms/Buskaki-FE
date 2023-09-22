@@ -3,12 +3,17 @@
 </div>
 <div class="container">
   <div>
-    <mat-form-field appearance="outline">
-      <mat-label>Filtro</mat-label>
+    <mat-form-field appearance="outline" style="width: 12rem;">
+      <mat-label>Bairro</mat-label>
+        <mat-select [(ngModel)]="selectedDistrict">
+          <mat-option *ngFor="let district of districts" [value]="district" (click)="fetchData()">
+            {{district}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: calc(100% - 18rem);">
+      <mat-label>Nome</mat-label>
       <input matInput placeholder="Ex. Bar Garrafeiros" #input [(ngModel)]="filterValue"/>
-      <button *ngIf="filterValue" matSuffix mat-icon-button aria-label="Clear" (click)="filterValue=''">
-        <mat-icon>close</mat-icon>
-      </button>
     </mat-form-field>
     <button
       mat-raised-button
@@ -19,6 +24,7 @@
       <mat-icon>search</mat-icon>
     </button>
   </div>
+
 
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
