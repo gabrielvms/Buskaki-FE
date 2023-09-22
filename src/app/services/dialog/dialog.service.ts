@@ -11,7 +11,8 @@ export class DialogService {
   openRowCard(data: any): void {
     this.dialog.open(RowCardComponent, {
       data: data,
-      width: '400px', // You can adjust the width as per your requirements
+      width: '55rem',
+      height: '26rem'
     });
   }
 }

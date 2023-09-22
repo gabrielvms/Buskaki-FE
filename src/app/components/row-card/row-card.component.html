@@ -1,12 +1,48 @@
-<h2 mat-dialog-title>Informação Detalhada</h2>
-<div mat-dialog-content>
-  <p><strong>CNPJ:</strong> {{ data.cnpj.substring(0,2)+"."+data.cnpj.substring(2,5)+"."+data.cnpj.substring(5,8)+"/"+data.cnpj.substring(8,12)+"-"+data.cnpj.substring(12,14) }}</p>
-  <p><strong>Nome Fantasia:</strong> {{ data.nome_fantasia }}</p>
-  <p><strong>Razão Social:</strong> {{ data.razao_social }}</p>
-  <p><strong>Endereço</strong> {{ data.tipo_logradouro + " " + data.logradouro }}</p>
-  <p><strong>Bairro:</strong> {{ data.bairro }}</p>
-  <p><strong>CEP:</strong> {{ data.cep.substring(0,5) + "-" + data.cep.substring(5,8) }}</p>
-</div>
+<h2 mat-dialog-title style="margin-bottom: 0;">Informação Detalhada</h2>
+<mat-grid-list cols="2" rowHeight="19rem">
+  <mat-grid-tile>
+  <div>
+    <p>
+      <strong>CNPJ:</strong>
+      {{
+        data.cnpj.substring(0, 2) +
+          "." +
+          data.cnpj.substring(2, 5) +
+          "." +
+          data.cnpj.substring(5, 8) +
+          "/" +
+          data.cnpj.substring(8, 12) +
+          "-" +
+          data.cnpj.substring(12, 14)
+      }}
+    </p>
+    <p><strong>Nome Fantasia:</strong> {{ data.nome_fantasia }}</p>
+    <p><strong>Razão Social:</strong> {{ data.razao_social }}</p>
+    <p>
+      <strong>Endereço</strong>
+      {{ data.tipo_logradouro + " " + data.logradouro }}
+    </p>
+    <p><strong>Bairro:</strong> {{ data.bairro }}</p>
+    <p>
+      <strong>CEP:</strong>
+      {{ data.cep.substring(0, 5) + "-" + data.cep.substring(5, 8) }}
+    </p>
+  </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <iframe
+      width="400"
+      height="300"
+      style="border: 0"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAgt91BsFfO8hiVTO831Tnc3ghN8v5lZBc
+      &q=Travessa%20Capit%C3%A3o%20Clementino%20Paran%C3%A1%2C%20104%2C%20Curitiba%2C%20Paran%C3%A1%2C%20Brasil"
+    >
+    </iframe>
+  </mat-grid-tile>
+</mat-grid-list>
 <div mat-dialog-actions>
-  <button mat-dialog-close mat-raised-button color="primary">Close</button>
+  <button mat-dialog-close mat-raised-button color="primary">Fechar</button>
 </div>
