@@ -51,7 +51,7 @@
       <!-- Endereço -->
       <ng-container matColumnDef="endereco">
         <th mat-header-cell *matHeaderCellDef>Endereço</th>
-        <td mat-cell *matCellDef="let element">{{ element.tipo_logradouro + " " + element.logradouro }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.tipo_logradouro + " " + element.logradouro + " " + element.numero}}</td>
       </ng-container>
 
       <!-- Bairro -->
