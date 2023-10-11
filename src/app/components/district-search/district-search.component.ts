@@ -7,6 +7,7 @@ import { Observable, map, startWith } from 'rxjs';
 import { DISTRICTS } from 'src/app/constants/districts';
 import { SearchResult } from 'src/app/interfaces/search-result';
 import { ApiService } from 'src/app/services/api/api.service';
+import { DialogService } from 'src/app/services/dialog/dialog.service';
 
 @Component({
   selector: 'app-distric-search',
@@ -18,7 +19,7 @@ export class DistrictSearchComponent {
   options: string[] = DISTRICTS;
   filteredOptions!: Observable<string[]>;
   
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private dialogService: DialogService) {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || '')),
@@ -54,5 +55,9 @@ export class DistrictSearchComponent {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  openRowCard(rowData: any) {
+    this.dialogService.openRowCard(rowData);
   }
 }

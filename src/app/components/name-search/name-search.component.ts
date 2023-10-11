@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { SearchResult } from 'src/app/interfaces/search-result';
 import { ApiService } from 'src/app/services/api/api.service';
 import { DISTRICTS } from 'src/app/constants/districts';
+import { DialogService } from 'src/app/services/dialog/dialog.service';
 
 @Component({
   selector: 'app-name-search',
@@ -14,7 +15,7 @@ import { DISTRICTS } from 'src/app/constants/districts';
 export class NameSearchComponent {
   districts: string[] = DISTRICTS;
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private dialogService: DialogService) {
   }
 
   displayedColumns: string[] = ['cnpj', 'nome_fantasia', 'razao_social', 'endereco', 'bairro', 'cep'];
@@ -24,8 +25,6 @@ export class NameSearchComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
   filterValue: string = "";
-  filterType: string = "";
-  selectedDistrict: string = "";
   results: SearchResult[] = [];
 
   ngOnInit(): void {
@@ -33,7 +32,7 @@ export class NameSearchComponent {
 
   applyFilter() {
     document.getElementById("spinner")!.style.display = "block";
-    this.apiService.filtroNomeFantasia(this.selectedDistrict, this.filterValue).subscribe((data: SearchResult[]) => {
+    this.apiService.filtroNomeFantasia(this.filterValue).subscribe((data: SearchResult[]) => {
       this.results = [];
       data.forEach(element => {
         this.results.push(element);
@@ -42,5 +41,9 @@ export class NameSearchComponent {
       this.dataSource.paginator = this.paginator;
       document.getElementById("spinner")!.style.display = "none";
     })
+  }
+
+  openRowCard(rowData: any) {
+    this.dialogService.openRowCard(rowData);
   }
 }

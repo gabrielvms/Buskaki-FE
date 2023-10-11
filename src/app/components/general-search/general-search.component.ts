@@ -25,19 +25,14 @@ export class GeneralSearchComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
   filterValue: string = "";
-  selectedDistrict: string = "";
   results: SearchResult[] = [];
 
   ngOnInit(): void {
   }
 
   applyFilter() {
-    this.dataSource.filter = this.filterValue.trim().toLowerCase();
-  }
-
-  fetchData(): void {
     document.getElementById("spinner")!.style.display = "block";
-    this.apiService.filtroBairro(this.selectedDistrict).subscribe((data: SearchResult[]) => {
+    this.apiService.filtroAvancado(this.filterValue).subscribe((data: SearchResult[]) => {
       data.forEach(element => {
         this.results.push(element);
       });

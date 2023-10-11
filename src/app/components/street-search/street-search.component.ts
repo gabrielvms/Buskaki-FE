@@ -6,6 +6,7 @@ import { SearchResult } from 'src/app/interfaces/search-result';
 import { ApiService } from 'src/app/services/api/api.service';
 import { DISTRICTS } from 'src/app/constants/districts';
 import { STREET_TYPES } from 'src/app/constants/street-types';
+import { DialogService } from 'src/app/services/dialog/dialog.service';
 
 @Component({
   selector: 'app-street-search',
@@ -16,7 +17,7 @@ export class StreetSearchComponent {
   districts: string[] = DISTRICTS;
   streetTypes: string[] = STREET_TYPES;
   
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private dialogService: DialogService) {
   }
 
   displayedColumns: string[] = ['cnpj', 'nome_fantasia', 'razao_social', 'endereco', 'bairro', 'cep'];
@@ -26,8 +27,6 @@ export class StreetSearchComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
   filterValue: string = "";
-  filterType: string = "";
-  selectedDistrict: string = "";
   results: SearchResult[] = [];
 
   ngOnInit(): void {
@@ -35,7 +34,7 @@ export class StreetSearchComponent {
 
   applyFilter() {
     document.getElementById("spinner")!.style.display = "block";
-    this.apiService.filtroRua(this.selectedDistrict, this.filterType, this.filterValue).subscribe((data: SearchResult[]) => {
+    this.apiService.filtroRua(this.filterValue).subscribe((data: SearchResult[]) => {
       this.results = [];
       data.forEach(element => {
         this.results.push(element);
@@ -44,5 +43,9 @@ export class StreetSearchComponent {
       this.dataSource.paginator = this.paginator;
       document.getElementById("spinner")!.style.display = "none";
     })
+  }
+
+  openRowCard(rowData: any) {
+    this.dialogService.openRowCard(rowData);
   }
 }

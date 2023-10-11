@@ -3,15 +3,7 @@
 </div>
 <div class="container">
   <div>
-    <mat-form-field appearance="outline" style="width: 12rem;">
-      <mat-label>Bairro</mat-label>
-        <mat-select [(ngModel)]="selectedDistrict">
-          <mat-option *ngFor="let district of districts" [value]="district" (click)="fetchData()">
-            {{district}}
-          </mat-option>
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline" style="width: calc(100% - 18rem);">
+    <mat-form-field appearance="outline">
       <mat-label>Nome</mat-label>
       <input matInput placeholder="Ex. Bar Garrafeiros" #input [(ngModel)]="filterValue"/>
     </mat-form-field>
@@ -72,12 +64,12 @@
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="6">
-          No data matching the filter "{{ input.value }}"
+          Faça uma busca para ver os resultados
         </td>
       </tr>
     </table>
     <mat-paginator
-      [pageSizeOptions]="[10, 25, 100]"
+      [pageSizeOptions]="[10, 25, 50, 100]"
       aria-label="Selecione a pagina"
     ></mat-paginator>
   </div>

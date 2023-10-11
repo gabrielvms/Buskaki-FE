@@ -11,12 +11,12 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  filtroNomeFantasia(bairro: string, company: string){
-    return this.http.get<SearchResult[]>(`${this.baseUrl}/companies/nome_fantasia/${bairro}/${company}`);
+  filtroNomeFantasia(company: string){
+    return this.http.get<SearchResult[]>(`${this.baseUrl}/companies/nome_fantasia/${company}`);
   };
 
-  filtroRazaoSocial(bairro: string, company: string){
-    return this.http.get<SearchResult[]>(`${this.baseUrl}/companies/razao_social/${bairro}/${company}`);
+  filtroRazaoSocial(company: string){
+    return this.http.get<SearchResult[]>(`${this.baseUrl}/companies/razao_social/${company}`);
   };
 
   filtroCnpj(cnpj: string){
@@ -26,7 +26,12 @@ export class ApiService {
   filtroBairro(bairro: string){
     return this.http.get<SearchResult[]>(`${this.baseUrl}/companies/bairro/${bairro}`);
   };
-  filtroRua(bairro: string, tipo_logradouro: string, logradouro: string){
-    return this.http.get<SearchResult[]>(`${this.baseUrl}/companies/endereco/${bairro}/${tipo_logradouro}/${logradouro}`);
+
+  filtroRua(logradouro: string){
+    return this.http.get<SearchResult[]>(`${this.baseUrl}/companies/endereco/${logradouro}`);
+  };
+
+  filtroAvancado(value: string){
+    return this.http.get<SearchResult[]>(`${this.baseUrl}/companies/advanced/${value}`);
   };
 }
