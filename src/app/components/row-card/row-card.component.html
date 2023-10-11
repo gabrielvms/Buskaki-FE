@@ -4,17 +4,7 @@
   <div>
     <p>
       <strong>CNPJ:</strong>
-      {{
-        data.cnpj.substring(0, 2) +
-          "." +
-          data.cnpj.substring(2, 5) +
-          "." +
-          data.cnpj.substring(5, 8) +
-          "/" +
-          data.cnpj.substring(8, 12) +
-          "-" +
-          data.cnpj.substring(12, 14)
-      }}
+      {{ maskCnpj(data.cnpj) }}
     </p>
     <p><strong>Nome Fantasia:</strong> {{ data.nome_fantasia }}</p>
     <p><strong>Razão Social:</strong> {{ data.razao_social }}</p>
@@ -23,10 +13,11 @@
       {{ data.tipo_logradouro + " " + data.logradouro }}
     </p>
     <p><strong>Número:</strong> {{ data.numero }}</p>
+    <p><strong>Complemento:</strong> {{ data.complemento }}</p>
     <p><strong>Bairro:</strong> {{ data.bairro }}</p>
     <p>
       <strong>CEP:</strong>
-      {{ data.cep.substring(0, 5) + "-" + data.cep.substring(5, 8) }}
+      {{ maskCep(data.cep) }}
     </p>
   </div>
   </mat-grid-tile>
@@ -38,8 +29,7 @@
       loading="lazy"
       allowfullscreen
       referrerpolicy="no-referrer-when-downgrade"
-      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAgt91BsFfO8hiVTO831Tnc3ghN8v5lZBc
-      &q=RUA JOAO BETTEGA PORTAO%2C%20Curitiba%2C%20Paran%C3%A1%2C%20Brasil"
+      [src]="makeIframeUrl(data.tipo_logradouro, data.logradouro, data.numero, data.bairro)"
     >
     </iframe>
   </mat-grid-tile>
