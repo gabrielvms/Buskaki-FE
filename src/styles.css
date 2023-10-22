@@ -1,8 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
 
-.container{
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
     margin: 1rem 4rem 3rem 4rem;
+}
+
+tr.pointer:not(.example-expanded-row):hover {
+    background: whitesmoke;
+    cursor: pointer;
+}
+
+tr.pointer:not(.example-expanded-row):active {
+    background: #efefef;
 }

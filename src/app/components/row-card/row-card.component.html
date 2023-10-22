@@ -21,17 +21,18 @@
     </p>
   </div>
   </mat-grid-tile>
-  <mat-grid-tile style="margin-right: 2rem;">
-    <iframe
+  <mat-grid-tile>
+    <div style="margin-right: 2rem !important;">
+      <iframe
       width="400"
       height="300"
       style="border: 0"
       loading="lazy"
       allowfullscreen
       referrerpolicy="no-referrer-when-downgrade"
-      [src]="makeIframeUrl(data.tipo_logradouro, data.logradouro, data.numero, data.bairro)"
-    >
-    </iframe>
+      [src]="makeIframeUrl(data.tipo_logradouro, data.logradouro, data.numero, data.bairro)">
+      </iframe>
+    </div>
   </mat-grid-tile>
 </mat-grid-list>
 <div mat-dialog-actions>

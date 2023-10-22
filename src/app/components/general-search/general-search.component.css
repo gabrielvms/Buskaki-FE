@@ -23,12 +23,3 @@ table {
   width: 3.5rem !important;
   height: 3.5rem !important;
 }
-
-tr.example-element-row:not(.example-expanded-row):hover {
-  background: whitesmoke;
-  cursor: pointer;
-}
-
-tr.example-element-row:not(.example-expanded-row):active {
-  background: #efefef;
-}
