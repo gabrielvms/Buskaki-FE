@@ -5,7 +5,7 @@
   <div>
     <mat-form-field appearance="outline">
       <mat-label>Nome</mat-label>
-      <input matInput placeholder="Ex. Bar Garrafeiros" #input [(ngModel)]="filterValue"/>
+      <input matInput placeholder="Ex. Bar Garrafeiros" #input [(ngModel)]="filterValue" (keypress.enter)="applyFilter()"/>
     </mat-form-field>
     <button
       mat-raised-button
