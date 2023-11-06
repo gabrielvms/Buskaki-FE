@@ -28,7 +28,7 @@ export class SocialNameSearchComponent {
   results: SearchResult[] = [];
 
   ngOnInit(): void {
-    document.getElementById("spinner")!.style.display = "block";  
+    document.getElementById("spinner")!.style.display = "none";  
   }
 
   applyFilter() {
