@@ -30,6 +30,7 @@ export class StreetSearchComponent {
   results: SearchResult[] = [];
 
   ngOnInit(): void {
+    document.getElementById("spinner")!.style.display = "none";  
   }
 
   applyFilter() {
@@ -41,7 +42,7 @@ export class StreetSearchComponent {
       });
       this.dataSource = new MatTableDataSource(this.results);
       this.dataSource.paginator = this.paginator;
-      document.getElementById("spinner")!.style.display = "none";
+      document.getElementById("spinner")!.style.display = "block";
     })
   }
 

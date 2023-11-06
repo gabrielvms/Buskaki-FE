@@ -28,6 +28,7 @@ export class NameSearchComponent {
   results: SearchResult[] = [];
 
   ngOnInit(): void {
+    document.getElementById("spinner")!.style.display = "none";  
   }
 
   applyFilter() {

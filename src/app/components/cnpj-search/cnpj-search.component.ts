@@ -26,6 +26,7 @@ export class CnpjSearchComponent {
   results: SearchResult[] = [];
 
   ngOnInit(): void {
+    document.getElementById("spinner")!.style.display = "none";
   }
 
   applyFilter() {

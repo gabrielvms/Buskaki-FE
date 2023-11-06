@@ -28,6 +28,7 @@ export class GeneralSearchComponent {
   results: SearchResult[] = [];
 
   ngOnInit(): void {
+    document.getElementById("spinner")!.style.display = "none";
   }
 
   applyFilter() {

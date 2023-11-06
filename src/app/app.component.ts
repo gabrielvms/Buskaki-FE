@@ -7,8 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Buskaki-FE';
-
-  refresh() {
-    window.location.reload();
-  }
 }
